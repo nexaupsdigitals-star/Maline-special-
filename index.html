@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Little Check-In For You 💗</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:'Segoe UI',Arial,sans-serif;
+ color:#40334b;
+ background:linear-gradient(145deg,#fff0f6,#f3edff,#eaf5ff);
+}
+header{
+ text-align:center;padding:48px 20px 42px;color:white;
+ background:linear-gradient(135deg,#845ec2,#d65db1,#ff8e9e);
+ border-radius:0 0 34px 34px;
+}
+.heart{font-size:48px;animation:beat 1.5s infinite}
+@keyframes beat{50%{transform:scale(1.13)}}
+header h1{font-size:32px;margin:14px 0}
+header p{max-width:530px;margin:10px auto;line-height:1.8}
+main{max-width:700px;margin:22px auto;padding:0 13px}
+.card{
+ background:#ffffffed;padding:22px;border-radius:21px;
+ margin-bottom:17px;box-shadow:0 7px 24px #60408012;
+}
+h2{font-size:21px;color:#9149a9;margin-top:0}
+p{line-height:1.8}
+.label{color:#d14f9a;font-size:12px;font-weight:bold;letter-spacing:1px}
+button{
+ border:0;border-radius:13px;padding:12px 15px;margin:5px 3px;
+ background:#f2e7ff;color:#713b91;font-size:14px;
+ font-weight:600;cursor:pointer;
+}
+button.selected{background:#a45bd4;color:white}
+button:hover{filter:brightness(.97)}
+.primary{
+ background:linear-gradient(120deg,#9956d7,#ec65a8);
+ color:white;width:100%;padding:15px;
+}
+.buttons{display:flex;flex-wrap:wrap;gap:5px}
+textarea,input{
+ width:100%;padding:13px;margin-top:8px;
+ border:1px solid #e5d6ee;border-radius:12px;
+ font:inherit;background:white;
+}
+textarea{min-height:88px;resize:vertical}
+.reply{
+ display:none;background:#fff0f7;border-radius:13px;
+ padding:13px;margin-top:12px;line-height:1.8;
+}
+.note{background:#f4efff;padding:16px;border-radius:14px}
+.small{font-size:13px;color:#8c7c96}
+footer{text-align:center;padding:28px 16px 40px;color:#876b94}
+.divider{border:0;border-top:1px solid #f0e6f5;margin:18px 0}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="heart">💗</div>
+<p>A LITTLE MESSAGE MADE WITH CARE</p>
+<h1>Hey, My Special Friend! 🥹💕</h1>
+<p>
+I know Tharaka University keeps you busy, but today I wanted
+to pause for a moment and check on YOU.
+How have you really been doing?
+</p>
+<p>And please 😂❤️, not just "I'm fine" if there's more to say.</p>
+</header>
+
+<main>
+
+<section class="card">
+<p class="label">01 · SOMETHING I WANTED YOU TO KNOW</p>
+<h2>I've genuinely missed you 🥹❤️</h2>
+<p>
+Hey you! Honestly, I don't know whether you've noticed, but
+I've actually missed you. I've missed our conversations,
+the little moments when we get to talk, and simply knowing
+how life is going on your side.
+</p>
+<p>
+Sometimes life gets busy and days pass quickly. Everyone has
+their own responsibilities, plans, and things to deal with.
+But even when we're both busy, that doesn't mean we forget
+the people who matter to us.
+</p>
+<p>
+You're one of those people I genuinely appreciate, and I
+thought instead of just thinking about checking on you,
+why not actually do it? 😂💕
+</p>
+<p>
+So this little website is my way of asking how you're doing,
+how campus life is treating you, whether your studies are
+going well, and whether you're giving yourself enough time
+to breathe.
+</p>
+<div class="note">
+<strong>A little reminder for you:</strong><br>
+You don't have to achieve something extraordinary every day
+to be doing well. Sometimes getting through a difficult day
+is an achievement on its own. 🌷
+</div>
+</section>
+
+<section class="card">
+<p class="label">02 · LET'S START WITH YOU</p>
+<h2>How are you, really? 🫶</h2>
+<p>
+If someone asked you how you're doing right now, what would
+your honest answer be?
+</p>
+<div class="buttons" id="mood">
+<button onclick="pick(this,'mood','Happy and grateful 😊')">Happy 😊</button>
+<button onclick="pick(this,'mood','Peaceful and okay 😌')">At peace 😌</button>
+<button onclick="pick(this,'mood','A little tired lately 😴')">Tired 😴</button>
+<button onclick="pick(this,'mood','Stressed but trying 🥹')">Stressed 🥹</button>
+<button onclick="pick(this,'mood','I have mixed feelings 💭')">Mixed feelings 💭</button>
+<button onclick="pick(this,'mood','I really need a break 😩')">Need a break 😩</button>
+</div>
+<div class="reply" id="moodReply"></div>
+
+<p><strong>And on a scale of 1–10, how is life treating you?</strong></p>
+<div class="buttons" id="rating">
+<button onclick="pick(this,'rating','1–3 out of 10')">1–3 🥲</button>
+<button onclick="pick(this,'rating','4–6 out of 10')">4–6 😐</button>
+<button onclick="pick(this,'rating','7–8 out of 10')">7–8 😊</button>
+<button onclick="pick(this,'rating','9–10 out of 10')">9–10 🥳</button>
+</div>
+<div class="reply" id="ratingReply"></div>
+</section>
+
+<section class="card">
+<p class="label">03 · THARAKA UNIVERSITY 🎓</p>
+<h2>How are your studies going?</h2>
+<p>
+Now let's talk about the main business! 😂📚 How is university
+life treating you? I hope you're learning, growing, meeting
+good people, and making progress toward the things you want
+for your future.
+</p>
+<p><strong>First, how are your classes going?</strong></p>
+<div class="buttons" id="classes">
+<button onclick="pick(this,'classes','Classes are going well 📚')">Going well 📚</button>
+<button onclick="pick(this,'classes','They are manageable 😊')">Manageable 😊</button>
+<button onclick="pick(this,'classes','Some units are difficult 😅')">Some are hard 😅</button>
+<button onclick="pick(this,'classes','University is stressing me out 🥲')">It's stressful 🥲</button>
+<button onclick="pick(this,'classes','I am still adjusting to campus life 🌱')">Still adjusting 🌱</button>
+</div>
+<div class="reply" id="classesReply"></div>
+
+<p><strong>Which part of campus life is giving you the most trouble?</strong></p>
+<div class="buttons" id="school">
+<button onclick="pick(this,'school','Assignments and coursework 📝')">Assignments 📝</button>
+<button onclick="pick(this,'school','Tests and exams 😭')">Tests/exams 😭</button>
+<button onclick="pick(this,'school','Understanding some units 🤔')">Some units 🤔</button>
+<button onclick="pick(this,'school','Balancing everything ⏳')">Time management ⏳</button>
+<button onclick="pick(this,'school','Honestly, I am doing fine 😂')">I'm good 😂</button>
+</div>
+<div class="reply" id="schoolReply"></div>
+
+<p><strong>Have you been getting enough time to study?</strong></p>
+<div class="buttons" id="study">
+<button onclick="pick(this,'study','Yes, I have a good routine 📖')">Yes 📖</button>
+<button onclick="pick(this,'study','I am trying my best 💪')">Trying 💪</button>
+<button onclick="pick(this,'study','Procrastination is winning 😂')">Procrastinating 😂</button>
+<button onclick="pick(this,'study','I need a better routine 🗓️')">Need a routine 🗓️</button>
+</div>
+<div class="reply" id="studyReply"></div>
+
+<p><strong>Any upcoming CATs, assignments, or exams you're preparing for?</strong></p>
+<textarea id="exams" placeholder="Tell me how the academic side is going..."></textarea>
+
+<p><strong>What's one academic goal you really want to achieve this semester?</strong></p>
+<textarea id="academicGoal" placeholder="Better grades, finishing assignments, understanding a unit..."></textarea>
+
+<p>
+I genuinely hope your hard work pays off. And remember, you
+don't have to compare your journey with anyone else's.
+Your progress is your progress. 💗
+</p>
+</section>
+
+<section class="card">
+<p class="label">04 · YOUR CAMPUS EXPERIENCE</p>
+<h2>Are you enjoying university life? 🌸</h2>
+<p>
+University is more than lectures and exams. There's the
+friendships, the funny moments, the unexpected experiences,
+and those days when all you want is to go home and rest. 😂
+</p>
+<p><strong>How has campus life been overall?</strong></p>
+<div class="buttons" id="campus">
+<button onclick="pick(this,'campus','I am enjoying it 😍')">Enjoying it 😍</button>
+<button onclick="pick(this,'campus','It's a mixture of everything 😅')">A mixture 😅</button>
+<button onclick="pick(this,'campus','I miss home sometimes 🏡')">Missing home 🏡</button>
+<button onclick="pick(this,'campus','I am still finding my people 🌷')">Finding my people 🌷</button>
+<button onclick="pick(this,'campus','I just want the semester to end 😂')">End the semester 😂</button>
+</div>
+<div class="reply" id="campusReply"></div>
+
+<p><strong>Have you made good friends there?</strong></p>
+<div class="buttons" id="friends">
+<button onclick="pick(this,'friends','Yes, I have good friends ❤️')">Yes ❤️</button>
+<button onclick="pick(this,'friends','A few good ones 😊')">A few 😊</button>
+<button onclick="pick(this,'friends','Still getting to know people 👋')">Still meeting people 👋</button>
+<button onclick="pick(this,'friends','Campus friendships are complicated 😂')">It's complicated 😂</button>
+</div>
+<div class="reply" id="friendsReply"></div>
+
+<p><strong>What's the funniest thing that has happened to you on campus recently?</strong></p>
+<textarea id="funny" placeholder="I want to hear the story 😂😂"></textarea>
+
+<p><strong>If you could change one thing about your campus experience, what would it be?</strong></p>
+<textarea id="change" placeholder="Anything at all..."></textarea>
+</section>
+
+<section class="card">
+<p class="label">05 · HOW IS HOME? 🏡</p>
+<h2>Let's talk about your people.</h2>
+<p>
+Away from lectures and campus activities, I also hope things
+are going well at home. How is everyone? I hope your family
+and the people you care about are safe, healthy, and doing okay.
+</p>
+<p><strong>How is everyone back home?</strong></p>
+<div class="buttons" id="home">
+<button onclick="pick(this,'home','Everyone is doing well ❤️')">Everyone is well ❤️</button>
+<button onclick="pick(this,'home','Things are okay 😊')">Things are okay 😊</button>
+<button onclick="pick(this,'home','Some things have been difficult 🙏')">A little difficult 🙏</button>
+<button onclick="pick(this,'home','I miss being at home 🥹')">I miss home 🥹</button>
+</div>
+<div class="reply" id="homeReply"></div>
+
+<p><strong>Have you managed to talk to your family lately?</strong></p>
+<div class="buttons" id="family">
+<button onclick="pick(this,'family','We talk often 📞')">Often 📞</button>
+<button onclick="pick(this,'family','Whenever I get time ❤️')">When I can ❤️</button>
+<button onclick="pick(this,'family','I need to call them soon 😂')">I need to call 😂</button>
+</div>
+<div class="reply" id="familyReply"></div>
+
+<p>Any good news from home? Or any family stories you've been wanting to share?</p>
+<textarea id="homeStory" placeholder="Tell me about home..."></textarea>
+</section>
+
+<section class="card">
+<p class="label">06 · ARE YOU TAKING CARE OF YOURSELF?</p>
+<h2>Because your wellbeing matters too. 🌻</h2>
+<p>
+Between classes, assignments, deadlines, and everything else,
+I hope you're remembering to look after yourself.
+</p>
+<p><strong>Are you sleeping well?</strong></p>
+<div class="buttons" id="sleep">
+<button onclick="pick(this,'sleep','Yes, my sleep is okay 😴')">Yes 😴</button>
+<button onclick="pick(this,'sleep','Not enough sleep lately 🥲')">Not enough 🥲</button>
+<button onclick="pick(this,'sleep','My sleep schedule is a mess 😂')">A mess 😂</button>
+</div>
+<div class="reply" id="sleepReply"></div>
+
+<p><strong>How about meals? Are you eating properly?</strong></p>
+<div class="buttons" id="food">
+<button onclick="pick(this,'food','Eating well 🍲')">Eating well 🍲</button>
+<button onclick="pick(this,'food','Sometimes I forget 😂')">Sometimes I forget 😂</button>
+<button onclick="pick(this,'food','Campus budget is fighting me 😭')">Budget issues 😭</button>
+</div>
+<div class="reply" id="foodReply"></div>
+
+<p><strong>Have you had time to relax and do something you enjoy?</strong></p>
+<div class="buttons" id="relax">
+<button onclick="pick(this,'relax','Yes, I make time for myself 🌸')">Yes 🌸</button>
+<button onclick="pick(this,'relax','Not as much as I would like 🥹')">Not really 🥹</button>
+<button onclick="pick(this,'relax','I need a proper break 😂')">Need a break 😂</button>
+</div>
+<div class="reply" id="relaxReply"></div>
+
+<div class="note">
+If life has felt heavy lately, please remember that taking
+a break doesn't mean you're lazy. You deserve rest, kindness,
+and people who listen without judging. ❤️
+</div>
+</section>
+
+<section class="card">
+<p class="label">07 · LET'S HAVE SOME FUN 😂</p>
+<h2>Quick questions! No overthinking.</h2>
+
+<p><strong>Choose your ideal free day:</strong></p>
+<div class="buttons" id="freeDay">
+<button onclick="pick(this,'freeDay','Sleeping all day 😴')">Sleep 😴</button>
+<button onclick="pick(this,'freeDay','Going out with friends 🥳')">Out with friends 🥳</button>
+<button onclick="pick(this,'freeDay','Watching movies 🍿')">Movies 🍿</button>
+<button onclick="pick(this,'freeDay','Calling someone and talking for hours 📞')">Long calls 📞</button>
+<button onclick="pick(this,'freeDay','Enjoying peace and quiet 🌿')">Peace and quiet 🌿</button>
+</div>
+<div class="reply" id="freeDayReply"></div>
+
+<p><strong>What instantly improves your mood?</strong></p>
+<div class="buttons" id="happy">
+<button onclick="pick(this,'happy','Good food 🍕')">Food 🍕</button>
+<button onclick="pick(this,'happy','Funny conversations 😂')">Laughter 😂</button>
+<button onclick="pick(this,'happy','Music and dancing 🎶')">Music 🎶</button>
+<button onclick="pick(this,'happy','A call from someone special 📞')">A good call 📞</button>
+<button onclick="pick(this,'happy','Getting good news ✨')">Good news ✨</button>
+</div>
+<div class="reply" id="happyReply"></div>
+
+<p><strong>Choose one right now:</strong></p>
+<div class="buttons" id="choice">
+<button onclick="pick(this,'choice','A surprise gift 🎁')">Surprise gift 🎁</button>
+<button onclick="pick(this,'choice','A peaceful holiday 🏖️')">Holiday 🏖️</button>
+<button onclick="pick(this,'choice','Money in my account 💸')">Money 😂💸</button>
+<button onclick="pick(this,'choice','A long conversation ❤️')">Good conversation ❤️</button>
+</div>
+<div class="reply" id="choiceReply"></div>
+
+<p><strong>Now tell me something random about yourself that I might not know.</strong></p>
+<textarea id="random" placeholder="Surprise me 😂"></textarea>
+</section>
+
+<section class="card">
+<p class="label">08 · YOUR DREAMS AND FUTURE ✨</p>
+<h2>What are you working towards?</h2>
+<p>
+Beyond this semester and the everyday campus routine, I
+hope you're still holding on to your dreams. I know the
+journey can sometimes be challenging, but I hope you keep
+believing in what you're capable of.
+</p>
+
+<p><strong>What's your biggest goal right now?</strong></p>
+<textarea id="dream" placeholder="Tell me about the future you're working towards..."></textarea>
+
+<p><strong>What's something you've always wanted to do?</strong></p>
+<textarea id="bucket" placeholder="A trip, a skill, a personal goal..."></textarea>
+
+<p><strong>What's one thing you're proud of yourself for?</strong></p>
+<textarea id="proud" placeholder="Even a small achievement counts ❤️"></textarea>
+
+<p><strong>If you could send a message to your future self, what would you say?</strong></p>
+<textarea id="future" placeholder="Dear future me..."></textarea>
+
+<div class="note">
+I hope you become the person you're working so hard to
+become. And even before you get there, I hope you learn
+to appreciate the person you already are. 💗
+</div>
+</section>
+
+<section class="card">
+<p class="label">09 · SOMETHING MORE PERSONAL 💌</p>
+<h2>Can I ask you a few honest questions?</h2>
+
+<p>Do you ever feel like you're doing your best but people don't always notice?</p>
+<div class="buttons" id="noticed">
+<button onclick="pick(this,'noticed','Yes, sometimes 🥹')">Sometimes 🥹</button>
+<button onclick="pick(this,'noticed','Yes, quite often 💭')">Quite often 💭</button>
+<button onclick="pick(this,'noticed','Not really 😊')">Not really 😊</button>
+</div>
+<div class="reply" id="noticedReply"></div>
+
+<p>When you're having a difficult day, what do you usually need from a friend?</p>
+<div class="buttons" id="need">
+<button onclick="pick(this,'need','Someone to listen 👂')">Someone to listen 👂</button>
+<button onclick="pick(this,'need','Someone to make me laugh 😂')">Make me laugh 😂</button>
+<button onclick="pick(this,'need','Encouragement and advice 💪')">Encouragement 💪</button>
+<button onclick="pick(this,'need','Space until I feel better 🌿')">Some space 🌿</button>
+</div>
+<div class="reply" id="needReply"></div>
+
+<p>What's one thing that has been on your mind lately?</p>
+<textarea id="mind" placeholder="You can share as much or as little as you want..."></textarea>
+
+<p>Is there anything you wish someone would ask you more often?</p>
+<textarea id="ask" placeholder="Something you wish people checked on..."></textarea>
+</section>
+
+<section class="card">
+<p class="label">10 · A LITTLE APPRECIATION ❤️</p>
+<h2>I'm glad our paths crossed.</h2>
+<p>
+I may not always say it, but I genuinely appreciate having
+you as a friend. Some people make conversations feel
+natural, and some people are simply nice to have around.
+</p>
+<p>
+I wanted to remind you that you're remembered, that your
+life matters beyond your grades, and that your wellbeing
+matters beyond how productive you've been.
+</p>
+<p>
+I hope you meet people who encourage you, find opportunities
+that help you grow, and experience moments that make you
+grateful for the journey you're on.
+</p>
+<p>
+And whenever we get the chance to catch up, I hope we can
+talk about all the things we've missed, laugh at random
+things, and share how life has been going. 😂💗
+</p>
+<p>
+No pressure to answer everything on this page. I just
+wanted to give you a little space to share what's going
+on in your world.
+</p>
+</section>
+
+<section class="card">
+<p class="label">11 · BEFORE YOU GO 🥹</p>
+<h2>One last thing, my special friend.</h2>
+<p>
+How would you like us to catch up?
+</p>
+<div class="buttons" id="catchup">
+<button onclick="pick(this,'catchup','A phone call would be nice 📞')">A phone call 📞</button>
+<button onclick="pick(this,'catchup','Let us text and catch up 💬')">Texting 💬</button>
+<button onclick="pick(this,'catchup','We should meet when we get time ☕')">Meet sometime ☕</button>
+<button onclick="pick(this,'catchup','Surprise me 😂❤️')">Surprise me 😂</button>
+</div>
+<div class="reply" id="catchupReply"></div>
+
+<p>Is there anything you want to tell me before we finish?</p>
+<textarea id="message" placeholder="Anything at all... I'm listening ❤️"></textarea>
+
+<p>
+Thank you for taking a little time to go through this.
+I hope your day gets a little brighter, your studies go
+well, and you remember to take care of yourself.
+</p>
+<p>
+<strong>You are appreciated. You are remembered. And I'm
+genuinely glad to have you in my life as a friend. 💗</strong>
+</p>
+
+<button class="primary" onclick="makeSummary()">💌 Put My Answers Together</button>
+<div class="reply" id="summary"></div>
+<p class="small">
+Your answers stay in this browser unless you choose to
+share them. You can skip any question you don't want to answer.
+</p>
+</section>
+
+</main>
+
+<footer>
+<div style="font-size:30px">💗🌷✨</div>
+<p>Take care of yourself, okay?</p>
+<strong>Looking forward to catching up with you ❤️</strong>
+<p class="small">Made with care, just for you.</p>
+</footer>
+
+<script>
+const answers={};
+
+const replies={
+ mood:"Thank you for being honest with me. Whatever your mood is today, I hope you give yourself a little kindness. ❤️",
+ rating:"Whatever number you chose, I hope the days ahead bring you more reasons to smile. 🌷",
+ classes:"I hope things keep improving. And if it's challenging, remember that asking for help and taking things one step at a time is okay. 📚",
+ school:"One assignment or one difficult unit doesn't define your ability. Keep going at your own pace. 💪",
+ study:"Little by little still counts. I hope you find a routine that works for you. 💗",
+ campus:"Every campus journey is different. I hope you find your people and make memories worth keeping. 🌸",
+ friends:"Quality matters more than quantity. I hope you have people around you who genuinely want to see you do well. 🫶",
+ home:"Sending good wishes to you and your people at home. I hope everyone stays safe and well. ❤️",
+ fami
