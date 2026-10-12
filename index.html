@@ -4,125 +4,75 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Little Surprise For You 💌</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-:root{--pink:#ff6b9d;--purple:#8c52ff;--cream:#fff8fc}
-body{
- margin:0;font-family:Arial,sans-serif;color:#43263f;
- background:linear-gradient(135deg,#ffe2ef,#f0e5ff,#fff8f0);
- min-height:100vh;overflow-x:hidden
-}
+body{margin:0;font-family:'Plus Jakarta Sans',Arial,sans-serif;color:#4a2844;background:linear-gradient(135deg,#ffe2ef 0%,#f0e5ff 50%,#fff8f0 100%);min-height:100vh;overflow-x:hidden}
 button,textarea{font:inherit}
 button{cursor:pointer}
 .hidden{display:none!important}
-#opening{
- min-height:100vh;display:flex;align-items:center;justify-content:center;
- padding:24px;text-align:center
-}
-.open-card{
- width:100%;max-width:420px;background:#ffffffd9;
- border-radius:28px;padding:30px 23px;
- box-shadow:0 15px 50px #8b397c20;
- border:1px solid white
-}
-.eyebrow{letter-spacing:3px;font-size:11px;color:#a14c8c}
-.envelope{
- font-size:100px;display:block;margin:20px auto;
- animation:bob 2s infinite ease-in-out
-}
-h1{font-family:Georgia,serif;font-size:32px;line-height:1.2;margin:12px 0}
-p{line-height:1.7}
-.primary{
- border:0;border-radius:30px;padding:15px 22px;
- color:white;background:linear-gradient(120deg,#ff629c,#9b5cff);
- font-weight:bold;box-shadow:0 8px 20px #b54a9b35;
- width:100%;margin-top:12px
-}
-.secondary{
- border:1px solid #edb9d9;background:#fff8fc;color:#864675;
- border-radius:22px;padding:12px 15px;margin:5px
-}
-#main{max-width:680px;margin:auto;padding:20px 15px 45px}
-.top{text-align:center;padding:20px 5px}
-.top .emoji{font-size:48px}
-.top h1{font-size:34px}
-.note{
- background:#fffdfd;border-radius:22px;padding:21px;margin:16px 0;
- box-shadow:0 6px 25px #74365d0c;border:1px solid #ffffff
-}
-.note h2{font-size:20px;margin-top:0;color:#934b84}
-.small{font-size:13px;color:#98778f}
-.choices{display:flex;flex-wrap:wrap;gap:9px}
-.choice{
- border:1px solid #edc8df;background:#fff8fc;color:#68455f;
- border-radius:24px;padding:11px 14px;transition:.2s
-}
-.choice.selected{
- background:#914c9c;color:white;border-color:#914c9c;
- transform:scale(1.04);box-shadow:0 4px 12px #914c9c25
-}
-textarea{
- width:100%;min-height:95px;border:1px solid #edc8df;
- border-radius:15px;padding:13px;resize:vertical;
- background:#fffafd;color:#43263f;outline:none
-}
+#opening{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+.open-card{width:100%;max-width:440px;background:rgba(255,255,255,0.92);border-radius:32px;padding:36px 26px;box-shadow:0 20px 60px #8b397c25;border:1px solid white;backdrop-filter:blur(10px)}
+.eyebrow{letter-spacing:3.2px;font-size:11px;color:#b65a9e;font-weight:700}
+.envelope{font-size:110px;display:block;margin:18px auto;animation:bob 2.2s infinite ease-in-out}
+h1{font-family:'Fraunces',Georgia,serif;font-size:34px;line-height:1.1;margin:14px 0}
+p{line-height:1.75;font-size:15.5px;color:#5f3a58}
+.primary{border:0;border-radius:999px;padding:16px 24px;color:white;background:linear-gradient(120deg,#ff629c,#9b5cff);font-weight:700;box-shadow:0 10px 24px #b54a9b35;width:100%;margin-top:14px;transition:.2s}
+.primary:active{transform:scale(0.98)}
+#main{max-width:700px;margin:auto;padding:18px 14px 50px}
+.top{text-align:center;padding:26px 8px}
+.top.big{font-size:52px}
+.note{background:#fffffd;border-radius:24px;padding:22px 20px;margin:18px 0;box-shadow:0 8px 30px #74365d0e;border:1px solid #fff}
+.note h2{font-family:'Fraunces',serif;font-size:21px;margin:0 0 10px;color:#8d3f7f}
+.small{font-size:13px;color:#9a7a93}
+.choices{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 6px}
+.choice{border:1.5px solid #edc8df;background:#fff8fc;color:#6a445f;border-radius:999px;padding:11px 16px;transition:.2s;font-size:14px;font-weight:600}
+.choice.selected{background:#9c4fa8;color:white;border-color:#9c4fa8;transform:scale(1.04);box-shadow:0 6px 16px #9c4fa834}
+textarea{width:100%;min-height:100px;border:1.5px solid #edc8df;border-radius:16px;padding:14px;resize:vertical;background:#fffafd;color:#43263f;outline:none;margin-top:10px;font-size:14.5px}
 textarea:focus{border-color:#b45cb5}
-.response{
- margin-top:12px;background:#fff0f7;padding:12px 14px;
- border-radius:13px;color:#854c79;font-size:14px;line-height:1.6
-}
-.progress-wrap{height:7px;background:#f1d8e8;border-radius:10px;overflow:hidden}
-#progress{height:100%;width:0;background:linear-gradient(90deg,#ff649c,#9557ff);transition:.3s}
-.progress-label{text-align:right;font-size:12px;color:#966b8b;margin:6px 0}
-.footer{text-align:center;font-size:12px;color:#98778f;padding:25px 0}
-#preview{white-space:pre-wrap;overflow-wrap:anywhere}
-.heart{
- position:fixed;bottom:-30px;pointer-events:none;z-index:5;
- animation:floatUp 5s linear forwards
-}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
-@keyframes floatUp{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+.response{margin-top:12px;background:#fff0f7;padding:12px 14px;border-radius:14px;color:#7f4a76;font-size:14px;line-height:1.6}
+.progress-wrap{height:8px;background:#f1d8e8;border-radius:999px;overflow:hidden}
+#progress{height:100%;width:0;background:linear-gradient(90deg,#ff649c,#9557ff);transition:.4s}
+.progress-label{text-align:right;font-size:12px;color:#9a6f8e;margin:8px 0 2px;font-weight:600}
+.footer{text-align:center;font-size:12px;color:#a2859b;padding:30px 0;line-height:1.6}
+.heart{position:fixed;bottom:-30px;pointer-events:none;z-index:50;animation:floatUp 5.5s linear forwards}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+.wa-preview{background:#f6eef6;border:1px dashed #d9b6d1;border-radius:14px;padding:12px;font-size:13px;white-space:pre-wrap;color:#6a4460;margin-top:12px}
 </style>
 </head>
-
 <body>
 
-<!-- OPENING SURPRISE -->
 <section id="opening">
  <div class="open-card">
   <div class="eyebrow">A LITTLE SOMETHING FOR YOU</div>
   <span class="envelope">💌</span>
   <h1>Hey, You! 🥹💕</h1>
-  <p>Someone thought of you today and decided you deserve a little surprise.</p>
-  <p>It isn't a test. It isn't homework. 😂 Just a small space where you can talk, smile, and be yourself.</p>
+  <p>Someone at Tharaka thought of you today and said, "She deserves a little surprise."</p>
+  <p>It's not a test. It's not an assignment 😂 Just a small corner where you can breathe and be honest.</p>
   <button class="primary" onclick="openSurprise()">OPEN YOUR SURPRISE 🎁</button>
-  <p class="small">Made with a little thought and a lot of care 💗</p>
+  <p class="small">Made with thought, not just code 💗</p>
  </div>
 </section>
 
-<!-- SURPRISE CONTENT -->
 <main id="main" class="hidden">
  <div class="top">
-  <div class="emoji">🌷💗✨</div>
+  <div class="big">🌷💗✨</div>
   <div class="eyebrow">YOUR LITTLE CORNER OF HAPPINESS</div>
   <h1>I'm Glad You're Here! 🥰</h1>
-  <p>First things first: how have you really been? Not just the usual “I'm fine” answer. 😂</p>
-  <p class="small">Answer whatever you feel comfortable answering. You can skip anything.</p>
- </div>
-
- <div class="note">
-  <h2>💌 A little message for you</h2>
-  <p>Hey, you. ❤️</p>
-  <p>I know life at campus can get busy. Classes, assignments, exams, people, expectations, and all those little things that sometimes stay in your mind even when you are smiling.</p>
-  <p>I just wanted to check on you properly. How is life treating you? How are you feeling? Are you taking care of yourself? Are you still making time for the things that make you happy?</p>
-  <p>You don't have to have everything figured out. I hope you know that your wellbeing matters, your dreams matter, and even the small things you go through deserve to be heard.</p>
-  <p>So, welcome to your little surprise. No pressure. Just you being you. 🌸</p>
+  <p>First things first — how have you <i>really</i> been? Not the campus "I'm fine" answer.</p>
+  <p class="small">Answer what you're comfortable with. You can skip anything.</p>
  </div>
 
  <div class="note">
   <div class="progress-wrap"><div id="progress"></div></div>
-  <div class="progress-label" id="progressText">Your little check-in 💗</div>
+  <div class="progress-label" id="progressText">0% - just getting started 💗</div>
+  <h2>💌 A little message for you</h2>
+  <p>Hey, you. ❤️ I know Tharaka can get busy — classes in Tharaka-Nithi heat, assignments, people, expectations, and those thoughts that stay even when you're smiling.</p>
+  <p>You don't have to have everything figured out. Your wellbeing matters, your dreams matter, and you deserve to feel special.</p>
+ </div>
+
+ <div class="note">
   <h2>01. How is your heart today? 💕</h2>
   <div class="choices">
    <button class="choice" onclick="choose(this,'mood','Happy 😊')">Happy 😊</button>
@@ -137,111 +87,174 @@ textarea:focus{border-color:#b45cb5}
  <div class="note">
   <h2>02. How are things at Tharaka University? 🎓</h2>
   <div class="choices">
-   <button class="choice" onclick="choose(this,'campus','Everything is going well')">Going well ✨</button>
-   <button class="choice" onclick="choose(this,'campus','Busy but manageable')">Busy but manageable 📚</button>
-   <button class="choice" onclick="choose(this,'campus','Campus life is challenging')">Quite challenging 😮‍💨</button>
-   <button class="choice" onclick="choose(this,'campus','I need a proper break')">I need a break 😂</button>
+   <button class="choice" onclick="choose(this,'campus','Going well ✨')">Going well ✨</button>
+   <button class="choice" onclick="choose(this,'campus','Busy but manageable 📚')">Busy but manageable 📚</button>
+   <button class="choice" onclick="choose(this,'campus','Quite challenging 😮‍💨')">Quite challenging 😮‍💨</button>
+   <button class="choice" onclick="choose(this,'campus','I need a proper break 😂')">I need a break 😂</button>
   </div>
   <div class="response hidden" id="campusReply"></div>
-  <p>What has campus life been like lately? Any funny stories, new experiences, or unexpected drama? 😂</p>
+  <p class="small">What has campus life been like lately?</p>
   <textarea id="campusStory" placeholder="Tell me a little about campus..."></textarea>
  </div>
 
  <div class="note">
   <h2>03. And the studies? 📖</h2>
   <div class="choices">
-   <button class="choice" onclick="choose(this,'studies','I'm understanding things well')">Understanding things well 💡</button>
-   <button class="choice" onclick="choose(this,'studies','The workload is a lot')">Too much workload 😭</button>
-   <button class="choice" onclick="choose(this,'studies','Exams are on my mind')">Thinking about exams 📝</button>
-   <button class="choice" onclick="choose(this,'studies','I'm still finding my rhythm')">Finding my rhythm 🌱</button>
+   <button class="choice" onclick="choose(this,'studies','Understanding well 💡')">Understanding well 💡</button>
+   <button class="choice" onclick="choose(this,'studies','Workload is a lot 😭')">Too much workload 😭</button>
+   <button class="choice" onclick="choose(this,'studies','Thinking about exams 📝')">Thinking about exams 📝</button>
+   <button class="choice" onclick="choose(this,'studies','Finding my rhythm 🌱')">Finding my rhythm 🌱</button>
   </div>
   <div class="response hidden" id="studiesReply"></div>
-  <p>What's one academic thing you want to achieve this semester?</p>
+  <p class="small">One academic thing you want to achieve this semester?</p>
   <textarea id="goal" placeholder="A goal, a plan, or even a small victory..."></textarea>
  </div>
 
  <div class="note">
   <h2>04. Have you been taking care of yourself? 🌷</h2>
   <div class="choices">
-   <button class="choice" onclick="choose(this,'selfcare','Yes, I'm trying my best')">Trying my best 💗</button>
-   <button class="choice" onclick="choose(this,'selfcare','Sleep has been a struggle')">Sleep is a struggle 😴</button>
-   <button class="choice" onclick="choose(this,'selfcare','I need more rest')">I need more rest 🛌</button>
-   <button class="choice" onclick="choose(this,'selfcare','I need some time for myself')">Time for myself 🌿</button>
+   <button class="choice" onclick="choose(this,'selfcare','Trying my best 💗')">Trying my best 💗</button>
+   <button class="choice" onclick="choose(this,'selfcare','Sleep is a struggle 😴')">Sleep is a struggle 😴</button>
+   <button class="choice" onclick="choose(this,'selfcare','I need more rest 🛌')">I need more rest 🛌</button>
+   <button class="choice" onclick="choose(this,'selfcare','Time for myself 🌿')">Time for myself 🌿</button>
   </div>
   <div class="response hidden" id="selfcareReply"></div>
-  <p>Be honest: have you been eating properly, sleeping enough, and giving yourself breaks?</p>
-  <textarea id="wellbeing" placeholder="How have you been looking after yourself?"></textarea>
+  <textarea id="wellbeing" placeholder="Eating properly? Sleeping enough? Be honest..."></textarea>
  </div>
 
  <div class="note">
-  <h2>05. How is everyone back home? 🏡</h2>
+  <h2>05. Your people & your happiness 🫶</h2>
   <div class="choices">
-   <button class="choice" onclick="choose(this,'home','Everyone is doing fine')">Everyone is fine ❤️</button>
-   <button class="choice" onclick="choose(this,'home','I miss home a lot')">I miss home 🥹</button>
-   <button class="choice" onclick="choose(this,'home','I haven't checked in enough')">Need to check in more 📞</button>
-   <button class="choice" onclick="choose(this,'home','Things have been complicated')">It's complicated 🫂</button>
-  </div>
-  <div class="response hidden" id="homeReply"></div>
-  <p>How is your family doing? Anything from home you've been thinking about or missing?</p>
-  <textarea id="family" placeholder="Share anything you feel comfortable sharing..."></textarea>
- </div>
-
- <div class="note">
-  <h2>06. Your people and your happiness 🫶</h2>
-  <p>Have you found people who make campus feel a little more like home?</p>
-  <div class="choices">
-   <button class="choice" onclick="choose(this,'friends','Yes, good people around me')">Good people around me 🥰</button>
-   <button class="choice" onclick="choose(this,'friends','Still finding my people')">Still finding my people 🌱</button>
-   <button class="choice" onclick="choose(this,'friends','I enjoy my own company')">I enjoy my own company 😌</button>
-   <button class="choice" onclick="choose(this,'friends','I miss my people back home')">Missing my people 🥹</button>
+   <button class="choice" onclick="choose(this,'friends','Good people around me 🥰')">Good people around me 🥰</button>
+   <button class="choice" onclick="choose(this,'friends','Still finding my people 🌱')">Still finding my people 🌱</button>
+   <button class="choice" onclick="choose(this,'friends','I enjoy my own company 😌')">I enjoy my own company 😌</button>
+   <button class="choice" onclick="choose(this,'friends','Missing my people 🥹')">Missing my people 🥹</button>
   </div>
   <div class="response hidden" id="friendsReply"></div>
-  <p>What's one thing that can make you laugh even on a difficult day? 😂</p>
+  <p class="small">What makes you laugh even on a difficult day?</p>
   <textarea id="laugh" placeholder="A person, a memory, memes, anything..."></textarea>
  </div>
 
  <div class="note">
-  <h2>07. A few random questions 😂✨</h2>
-  <p>Choose your ideal free day:</p>
+  <h2>06. Random favourites 😂✨</h2>
+  <p class="small">Ideal free day:</p>
   <div class="choices">
-   <button class="choice" onclick="choose(this,'day','Sleeping all day')">Sleep all day 😴</button>
-   <button class="choice" onclick="choose(this,'day','Going on an adventure')">Go somewhere 🌍</button>
-   <button class="choice" onclick="choose(this,'day','Movies and snacks')">Movies and snacks 🍿</button>
-   <button class="choice" onclick="choose(this,'day','Talking with my favourite people')">Good conversations 💬</button>
+   <button class="choice" onclick="choose(this,'day','Sleep all day 😴')">Sleep all day 😴</button>
+   <button class="choice" onclick="choose(this,'day','Adventure 🌍')">Go somewhere 🌍</button>
+   <button class="choice" onclick="choose(this,'day','Movies & snacks 🍿')">Movies & snacks 🍿</button>
+   <button class="choice" onclick="choose(this,'day','Good conversations 💬')">Good conversations 💬</button>
   </div>
-  <p style="margin-top:22px">Choose your current mood's soundtrack:</p>
-  <div class="choices">
-   <button class="choice" onclick="choose(this,'music','Soft and peaceful')">Soft and peaceful 🎧</button>
-   <button class="choice" onclick="choose(this,'music','Something that makes me dance')">Dance music 💃</button>
-   <button class="choice" onclick="choose(this,'music','Sad songs for no reason')">Sad songs 😂</button>
-   <button class="choice" onclick="choose(this,'music','Silence is enough')">Just silence 🌙</button>
-  </div>
-  <p style="margin-top:22px">And what snack could improve your day instantly?</p>
+  <p class="small" style="margin-top:18px">Snack that would improve your day instantly?</p>
   <textarea id="snack" placeholder="Tell me your favourite snack 😋"></textarea>
  </div>
 
  <div class="note">
-  <h2>08. Let's talk about your dreams 🌟</h2>
-  <p>Forget the pressure for a moment. What is something you genuinely want for your future?</p>
-  <textarea id="dream" placeholder="Your dreams, goals, plans, or the life you're working towards..."></textarea>
-  <p>What is one thing you're proud of yourself for, even if nobody noticed?</p>
-  <textarea id="proud" placeholder="Give yourself credit for it. ❤️"></textarea>
+  <h2>07. Your dreams 🌟</h2>
+  <p class="small">What do you genuinely want for your future?</p>
+  <textarea id="dream" placeholder="Your dreams, goals, plans..."></textarea>
+  <p class="small">One thing you're proud of, even if nobody noticed?</p>
+  <textarea id="proud" placeholder="Give yourself credit ❤️"></textarea>
  </div>
 
  <div class="note">
-  <h2>09. Something you should hear 💗</h2>
-  <p>You don't always have to be the strong one. You don't have to turn every difficult day into a lesson immediately. Sometimes you can simply rest, breathe, and try again tomorrow.</p>
-  <p>Keep working towards your dreams, but remember to enjoy the person you're becoming along the way. You deserve kindness, genuine friendship, peaceful moments, and reasons to smile.</p>
-  <p>And if you ever feel like talking about life, campus, random nonsense, or something that's been weighing on you, I hope you feel free to speak honestly. You don't need to pretend everything is perfect. 🫂</p>
- </div>
-
- <div class="note">
-  <h2>10. Now it's my turn to listen 💌</h2>
-  <p>Is there anything you have wanted to tell me, ask me, or talk about but haven't had the chance to?</p>
+  <h2>08. Now it's my turn to listen 💌</h2>
+  <p class="small">Anything you wanted to tell me?</p>
   <textarea id="tellme" placeholder="Anything at all..."></textarea>
-  <p>Anything else you would like me to know about how you're doing?</p>
-  <textarea id="anything" placeholder="The floor is yours 💗"></textarea>
+  <textarea id="anything" placeholder="The floor is yours 💗" style="margin-top:10px"></textarea>
  </div>
 
- <div class="note">
-  <h2
+ <div class="note" style="border:2px solid #ff8fb5">
+  <h2>Ready to send? 🥰</h2>
+  <p>This will be sent privately to Kelvin on WhatsApp. No one else will see it.</p>
+  <div id="waPreview" class="wa-preview">Fill some answers and your preview will appear here...</div>
+  <button class="primary" onclick="sendToWhatsApp()">SEND TO KELVIN ON WHATSAPP 💌</button>
+  <p class="small" style="text-align:center;margin-top:10px">Opens WhatsApp to +254 796 124 880</p>
+  <div id="finalMessage" class="response hidden" style="margin-top:14px"></div>
+ </div>
+
+ <div class="footer">Made with 💗 for someone special at Tharaka University<br>You deserve kindness, peace, and reasons to smile.</div>
+</main>
+
+<script>
+const phoneNumber = '254796124880';
+const answers = {};
+const texts = {};
+const replies = {
+ mood: { 'Happy 😊':'That makes me so happy to hear! Keep that light shining ✨', 'Doing okay 🙂':'Okay is good. We take it one day at a time 💗', 'A little tired 😴':'Please rest, okay? You deserve soft moments 🫶', 'Overthinking 🤯':'Breathe. You don\'t have to figure it all out tonight 🌙', 'Not my best day 🫂':'I\'m hugging you virtually. Tomorrow can be softer 🥹' },
+ campus: 'Thanks for sharing about campus! 📚', studies: 'You got this! Small steps still count 🌱', selfcare: 'Please remember to be kind to yourself too 🌷', friends: 'You deserve people who feel like sunshine 🥰', day: 'That sounds perfect ✨'
+};
+function openSurprise(){
+ document.getElementById('opening').classList.add('hidden');
+ document.getElementById('main').classList.remove('hidden');
+ spawnHearts(14); window.scrollTo(0,0); updatePreview();
+}
+function choose(btn,key,val){
+ const parent=btn.parentElement;
+ parent.querySelectorAll('.choice').forEach(c=>c.classList.remove('selected'));
+ btn.classList.add('selected'); answers[key]=val;
+ const replyEl=document.getElementById(key+'Reply');
+ if(replyEl){ replyEl.classList.remove('hidden'); replyEl.innerText=replies[key]?.[val]||replies[key]||`You chose: ${val} 💗`; }
+ updateProgress(); updatePreview(); spawnHearts(4);
+}
+function updateProgress(){
+ const total=6; const done=Object.keys(answers).length;
+ const pct=Math.min(100,Math.round((done/total)*100));
+ document.getElementById('progress').style.width=pct+'%';
+ document.getElementById('progressText').innerText=pct+'% complete - you\'re doing amazing 💗';
+}
+function collectTexts(){
+ texts.campusStory=document.getElementById('campusStory').value.trim();
+ texts.goal=document.getElementById('goal').value.trim();
+ texts.wellbeing=document.getElementById('wellbeing').value.trim();
+ texts.laugh=document.getElementById('laugh').value.trim();
+ texts.snack=document.getElementById('snack').value.trim();
+ texts.dream=document.getElementById('dream').value.trim();
+ texts.proud=document.getElementById('proud').value.trim();
+ texts.tellme=document.getElementById('tellme').value.trim();
+ texts.anything=document.getElementById('anything').value.trim();
+}
+function buildMessage(){
+ collectTexts();
+ let msg=`Hey Kelvin 💌\nYou sent me a surprise link and I opened it 🥹\n\n*MY LITTLE CHECK-IN*\n`;
+ msg+=`💕 Heart today: ${answers.mood||'Not selected'}\n`;
+ msg+=`🎓 Campus life: ${answers.campus||'Not selected'}\n`;
+ if(texts.campusStory) msg+=` > "${texts.campusStory}"\n`;
+ msg+=`📖 Studies: ${answers.studies||'Not selected'}\n`;
+ if(texts.goal) msg+=` Goal: ${texts.goal}\n`;
+ msg+=`🌷 Self-care: ${answers.selfcare||'Not selected'}\n`;
+ if(texts.wellbeing) msg+=` > ${texts.wellbeing}\n`;
+ msg+=`🫶 Friends: ${answers.friends||'Not selected'}\n`;
+ if(texts.laugh) msg+=` Makes me laugh: ${texts.laugh}\n`;
+ msg+=`✨ Ideal day: ${answers.day||'Not selected'}\n`;
+ if(texts.snack) msg+=` Snack: ${texts.snack}\n`;
+ if(texts.dream) msg+=`\n🌟 My dream: ${texts.dream}\n`;
+ if(texts.proud) msg+=`Proud of: ${texts.proud}\n`;
+ if(texts.tellme) msg+=`\n💌 I wanted to tell you: ${texts.tellme}\n`;
+ if(texts.anything) msg+=`More: ${texts.anything}\n`;
+ msg+=`\nThanks for thinking of me. It made my day really special 💗`;
+ return msg;
+}
+function updatePreview(){ document.getElementById('waPreview').innerText=buildMessage(); }
+function sendToWhatsApp(){
+ const msg=buildMessage();
+ if(Object.keys(answers).length<2){ alert('Please answer at least 2 questions first 🥹💗'); return; }
+ const encoded=encodeURIComponent(msg);
+ const url=`https://wa.me/${phoneNumber}?text=${encoded}`;
+ document.getElementById('finalMessage').classList.remove('hidden');
+ document.getElementById('finalMessage').innerHTML=`Opening WhatsApp... 💌<br>If it doesn't open, <a href="${url}" target="_blank" style="color:#9c4fa8;font-weight:700">tap here</a>`;
+ spawnHearts(25); window.open(url,'_blank');
+}
+document.querySelectorAll('textarea').forEach(t=>{ t.addEventListener('input', updatePreview); });
+function spawnHearts(n){
+ for(let i=0;i<n;i++){
+  setTimeout(()=>{
+   const h=document.createElement('div'); h.className='heart';
+   h.innerText=['💗','💖','💕','🌸','✨','🥹'][Math.floor(Math.random()*6)];
+   h.style.left=Math.random()*100+'vw'; h.style.fontSize=(16+Math.random()*22)+'px';
+   document.body.appendChild(h); setTimeout(()=>h.remove(),5500);
+  }, i*110);
+ }
+}
+</script>
+</body>
+   </html>
